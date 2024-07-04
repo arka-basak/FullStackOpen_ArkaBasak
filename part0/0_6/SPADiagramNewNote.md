@@ -16,5 +16,4 @@ sequenceDiagram
     activate Server
     Server-->>Browser: Status Code: 201 Created, {"message":"note created"}
     deactivate Server
-
 ```
