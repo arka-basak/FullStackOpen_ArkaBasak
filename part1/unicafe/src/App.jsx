@@ -12,13 +12,20 @@ const FeedbackGiver = ({setGood, setNeutral, setBad, good, neutral, bad}) =>{
   )
 }
 
-const StatisticsDisplay = ({good,neutral,bad}) => {
+const Statistics = ({good,neutral,bad}) => {
+  const all = good + bad + neutral
+  const average = all > 0 ? (good - bad)/all : 0
+  const positive = all > 0 ? (good/all) * 100 : 0 
+
   return (
       <>
         <h1>statistics</h1>
         <div>good {good}</div>
         <div>neutral {neutral}</div>
         <div>bad {bad}</div>
+        <div>all {all}</div>
+        <div>average {average}</div>
+        <div>positive {positive} %</div>
       </>
   )
 }
@@ -32,7 +39,7 @@ const App = () => {
   return (
     <>
       <FeedbackGiver setGood = {setGood} setNeutral = {setNeutral} setBad = {setBad} good = {good} neutral = {neutral} bad = {bad}/>
-      <StatisticsDisplay good = {good} neutral = {neutral} bad = {bad}/>
+      <Statistics good = {good} neutral = {neutral} bad = {bad}/>
     </>
   )
 }
