@@ -11,23 +11,32 @@ const FeedbackGiver = ({setGood, setNeutral, setBad, good, neutral, bad}) =>{
     
   )
 }
-//statistics already in its own component, 1.8 complete already.
+
 const Statistics = ({good,neutral,bad}) => {
   const all = good + bad + neutral
-  const average = all > 0 ? (good - bad)/all : 0
-  const positive = all > 0 ? (good/all) * 100 : 0 
-
-  return (
+  if (all > 0){
+    const average = (good - bad)/all 
+    const positive = (good/all) * 100 
+    return (
+        <>
+          <h1>statistics</h1>
+          <div>good {good}</div>
+          <div>neutral {neutral}</div>
+          <div>bad {bad}</div>
+          <div>all {all}</div>
+          <div>average {average}</div>
+          <div>positive {positive} %</div>
+        </>
+    )
+  }else{
+    return (
       <>
         <h1>statistics</h1>
-        <div>good {good}</div>
-        <div>neutral {neutral}</div>
-        <div>bad {bad}</div>
-        <div>all {all}</div>
-        <div>average {average}</div>
-        <div>positive {positive} %</div>
+        <div>No feedback given</div>
       </>
-  )
+      
+    )
+  }
 }
 
 const App = () => {
