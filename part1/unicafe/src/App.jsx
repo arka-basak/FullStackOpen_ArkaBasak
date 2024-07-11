@@ -2,9 +2,9 @@ import { useState } from 'react'
 
 
 
-const Button = ({incrementFeedback, feedback, text}) =>{
+const Button = ({handleClick, text}) =>{
   return (
-    <button onClick = {() => incrementFeedback(feedback + 1)}>{text}</button>
+    <button onClick = {handleClick}>{text}</button>
   )
 }
 
@@ -56,12 +56,16 @@ const App = () => {
   const [neutral, setNeutral] = useState(0)
   const [bad, setBad] = useState(0)
 
+  const incrementGood = () => setGood(good+1)
+  const incrementNeutral = () => setNeutral(neutral+1)
+  const incrementBad = () =>setBad(bad + 1)
+
   return (
     <>
       <h1>give feedback</h1>
-      <Button incrementFeedback={setGood} feedback = {good} text = {'good'}/>
-      <Button incrementFeedback={setNeutral} feedback = {neutral} text = {'neutral'}/>
-      <Button incrementFeedback={setBad} feedback = {bad} text = {'bad'}/>
+      <Button handleClick = {incrementGood} text = {'good'}/>
+      <Button handleClick = {incrementNeutral}  text = {'neutral'}/>
+      <Button handleClick = {incrementBad}  text = {'bad'}/>
       <Statistics good = {good} neutral = {neutral} bad = {bad}/>
     </>
   )
