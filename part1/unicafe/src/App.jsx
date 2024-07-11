@@ -9,7 +9,12 @@ const Button = ({incrementFeedback, feedback, text}) =>{
 }
 
 const StatisticLine = ({text, value}) =>{
-  return <div>{text} {value}</div>
+  return (
+    <tr>
+      <td>{text}</td>
+      <td>{value}</td>
+    </tr>
+  )
 }
 
 
@@ -21,12 +26,17 @@ const Statistics = ({good,neutral,bad}) => {
     return (
         <>
           <h1>statistics</h1>
-          <StatisticLine text = 'good' value = {good}></StatisticLine>
-          <StatisticLine text = 'neutral' value = {neutral}></StatisticLine>
-          <StatisticLine text = 'bad' value = {bad}></StatisticLine>
-          <StatisticLine text = 'all' value = {all}></StatisticLine>
-          <StatisticLine text = 'average' value = {average}></StatisticLine>
-          <StatisticLine text = 'positive' value = {positive}></StatisticLine>
+          <table>
+            <tbody>
+              <StatisticLine text = 'good' value = {good}></StatisticLine>
+              <StatisticLine text = 'neutral' value = {neutral}></StatisticLine>
+              <StatisticLine text = 'bad' value = {bad}></StatisticLine>
+              <StatisticLine text = 'all' value = {all}></StatisticLine>
+              <StatisticLine text = 'average' value = {average}></StatisticLine>
+              <StatisticLine text = 'positive' value = {positive}></StatisticLine>
+            </tbody>
+          </table>
+          
         </>
     )
   }else{
