@@ -11,7 +11,7 @@ const FeedbackGiver = ({setGood, setNeutral, setBad, good, neutral, bad}) =>{
     
   )
 }
-
+//statistics already in its own component, 1.8 complete already.
 const Statistics = ({good,neutral,bad}) => {
   const all = good + bad + neutral
   const average = all > 0 ? (good - bad)/all : 0
