@@ -1,11 +1,10 @@
 import { useState } from 'react'
 
 const AddPersonForm = ({addPerson}) =>{
-  const [newName, setNewName] = useState('Enter Name Here...')
+  const [newName, setNewName] = useState('')
 
   const submitPersonForm = (e) => {
     e.preventDefault()
-    console.log(`submitting ${newName}`)
     addPerson(newName)
     setNewName('')
   }
