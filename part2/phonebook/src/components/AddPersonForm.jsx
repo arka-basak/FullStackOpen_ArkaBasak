@@ -26,7 +26,7 @@ const AddPersonForm = ({addPerson, newID}) =>{
                 number: <input value = {newNumber} onChange = {(e)=> setNewNumber(e.target.value)}/>
             </div>
             <div>
-            <button type="submit" >add</button>
+              <button type="submit" >add</button>
             </div>
         </form>
     </>
