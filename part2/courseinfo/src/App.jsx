@@ -1,5 +1,7 @@
 const Header = ({ course }) => <h1>{course}</h1>
 
+
+//already using reduce, 2.3 complete
 const Total = ({ parts }) => {
   const sum = parts.reduce((acc, part)=> {
     return acc + part.exercises
