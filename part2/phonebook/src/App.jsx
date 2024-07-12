@@ -2,16 +2,14 @@ import AddPersonForm from './components/AddPersonForm'
 import PersonsDisplay from './components/PersonsDisplay'
 import {useState} from 'react'
 
-const App = () => {
-  const [persons, setPersons] = useState([
-    { name: 'Arto Hellas' }
-  ]) 
+const App = ({data}) => {
+  const [persons, setPersons] = useState(data) 
 
-  const addPerson= (newName) => {
-    if (persons.some((person)=> person.name === newName)){
-      alert(`Person '${newName}' is already added to phonebook`)
+  const addPerson= (newPerson) => {
+    if (persons.some((person)=> person.name === newPerson.name)){
+      alert(`Person '${newPerson.name}' is already added to phonebook`)
     }else{
-      setPersons(persons.concat({name: newName}))
+      setPersons(persons.concat(newPerson))
     }
   }
     
