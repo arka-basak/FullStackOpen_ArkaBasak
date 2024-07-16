@@ -1,16 +1,19 @@
 import { useState } from 'react'
 
-const AddPersonForm = ({names,addPerson}) =>{
+const AddPersonForm = ({persons , addPerson , updateNumber}) =>{
   const [newName, setNewName] = useState('')
   const [newNumber, setNewNumber] = useState('')
 
 
   const submitPersonForm = (e) => {
     e.preventDefault()
+    const existingPerson = persons.find(person=> newName === person.name)
     if (newName.length <= 0 || newNumber.length <= 0 ){
       alert('Please fill all fields')
-    }else if (names.includes(newName)){
-      alert(`Person '${newName}' is already in phonebook`)
+    }else if (existingPerson){
+      if (window.confirm(`'${newName}' is already added to phonebook, replace the old number with a new one?`)){
+        updateNumber({...existingPerson, number: newNumber})
+      }
     }else{
       addPerson({
           name: newName,

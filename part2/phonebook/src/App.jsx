@@ -25,6 +25,12 @@ const App = () => {
       .deletePerson(id)
       .then(setPersons(persons.filter(person=> person.id !== id)))
   }
+
+  const updateNumber = (updatedPerson) => {
+    personService
+      .updateNumber(updatedPerson)
+      .then(returnedPerson =>setPersons(persons.map(person => returnedPerson.id === person.id ? returnedPerson : person)))
+  }
   
   const updateSearch = (filterString) =>{
     setFilter(filterString)
@@ -34,7 +40,7 @@ const App = () => {
     <div>
       <h2>Phonebook</h2>
       <PhoneBookSearch updateSearch = {updateSearch}/>
-      <AddPersonForm names = {persons.map(person=> person.name)}addPerson = {addPerson}/>
+      <AddPersonForm persons = {persons} addPerson = {addPerson} updateNumber = {updateNumber}/>
       <PersonsList persons = {persons} filter = {filter} deletePerson = {removePerson}/>
     </div>
   )
