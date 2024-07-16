@@ -2,32 +2,24 @@ import AddPersonForm from './components/AddPersonForm'
 import PersonsList from './components/PersonsList'
 import PhoneBookSearch from './components/PhoneBookSearch'
 import {useState, useEffect} from 'react'
-import axios from 'axios'
+import personService from './services/person'
 
 const App = () => {
   const [persons, setPersons] = useState([])
   const [filter, setFilter] = useState('')
 
   useEffect(()=>{
-    axios
-      .get('http://localhost:3001/persons')
-      .then((response)=>{
-        console.log('fetch successful',response.data)
-        setPersons(response.data)
-      })
+    personService
+      .getAll()
+      .then(people => setPersons(people))
   },[])
   
   const addPerson = (newPerson) => {
-    if (newPerson.name.length <= 0){
-      alert('Provide a name')
-    }else if (persons.some((person)=> person.name === newPerson.name)){
-      alert(`Person '${newPerson.name}' is already added to phonebook`)
-    }else{
-      setPersons(persons.concat(newPerson))
-    }
+    personService
+      .createPerson(newPerson)
+      .then(returnedPerson => setPersons(persons.concat(returnedPerson)))
   }
-
-
+  
   const updateSearch = (filterString) =>{
     setFilter(filterString)
   }
@@ -36,7 +28,7 @@ const App = () => {
     <div>
       <h2>Phonebook</h2>
       <PhoneBookSearch updateSearch = {updateSearch}/>
-      <AddPersonForm addPerson = {addPerson} newID = {persons.length + 1 }/>
+      <AddPersonForm names = {persons.map(person=> person.name)}addPerson = {addPerson}/>
       <PersonsList persons = {persons} filter = {filter}/>
     </div>
   )
