@@ -19,6 +19,12 @@ const App = () => {
       .createPerson(newPerson)
       .then(returnedPerson => setPersons(persons.concat(returnedPerson)))
   }
+
+  const removePerson = (id) => {
+    personService
+      .deletePerson(id)
+      .then(setPersons(persons.filter(person=> person.id !== id)))
+  }
   
   const updateSearch = (filterString) =>{
     setFilter(filterString)
@@ -29,7 +35,7 @@ const App = () => {
       <h2>Phonebook</h2>
       <PhoneBookSearch updateSearch = {updateSearch}/>
       <AddPersonForm names = {persons.map(person=> person.name)}addPerson = {addPerson}/>
-      <PersonsList persons = {persons} filter = {filter}/>
+      <PersonsList persons = {persons} filter = {filter} deletePerson = {removePerson}/>
     </div>
   )
 }

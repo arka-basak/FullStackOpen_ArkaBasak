@@ -1,6 +1,6 @@
 import PersonDisplay from "./PersonDisplay"
 
-const PersonsList = ({persons, filter}) =>{
+const PersonsList = ({persons, filter, deletePerson}) =>{
 
     const filteredPersons = persons.filter((person)=>person.name.toLowerCase().includes(filter))
 
@@ -10,7 +10,7 @@ const PersonsList = ({persons, filter}) =>{
             <table>
                 <tbody>
                     {filteredPersons.map((person)=>
-                        <PersonDisplay key = {person.id} person = {person}/>
+                        <PersonDisplay key = {person.id} person = {person} deletePerson = {deletePerson}/>
                     )}
                 </tbody>
             </table>
