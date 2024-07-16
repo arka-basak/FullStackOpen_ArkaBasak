@@ -1,12 +1,22 @@
 import AddPersonForm from './components/AddPersonForm'
 import PersonsList from './components/PersonsList'
 import PhoneBookSearch from './components/PhoneBookSearch'
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
+import axios from 'axios'
 
-const App = ({data}) => {
-  const [persons, setPersons] = useState(data)
+const App = () => {
+  const [persons, setPersons] = useState([])
   const [filter, setFilter] = useState('')
 
+  useEffect(()=>{
+    axios
+      .get('http://localhost:3001/persons')
+      .then((response)=>{
+        console.log('fetch successful',response.data)
+        setPersons(response.data)
+      })
+  },[])
+  
   const addPerson = (newPerson) => {
     if (newPerson.name.length <= 0){
       alert('Provide a name')
@@ -16,6 +26,8 @@ const App = ({data}) => {
       setPersons(persons.concat(newPerson))
     }
   }
+
+
   const updateSearch = (filterString) =>{
     setFilter(filterString)
   }
