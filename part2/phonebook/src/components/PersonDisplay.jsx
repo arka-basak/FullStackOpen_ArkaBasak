@@ -2,7 +2,7 @@ const PersonDisplay = ({person, deletePerson}) => {
     const deleteEntry = () =>{
         const confirmed  = window.confirm(`Delete '${person.name}'?`)
         if (confirmed){
-            deletePerson(person.id)
+            deletePerson(person.id, person.name)
         }
     }
 
