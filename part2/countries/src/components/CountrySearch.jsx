@@ -4,7 +4,7 @@ import CountryResults from './CountryResults'
 
 
 const CountrySearch = () =>{
-    const [filterString, setFilterString] = useState('Sw')
+    const [filterString, setFilterString] = useState('')
     const [matches, setMatches] = useState([])
 
     const queryCountries = (input) =>{
@@ -21,14 +21,19 @@ const CountrySearch = () =>{
     }
 
     useEffect(()=>{
-        console.log(matches)
-    },[matches])
+        queryCountries(filterString)
+    },[ filterString])
+
+    const handleClick = (e) =>{
+        e.preventDefault()
+        setFilterString(e.target.name)
+    }
 
     return (
         <>
             find countries 
             <input value = {filterString} onChange = {e => updateSearch(e.target.value)}/>
-            <CountryResults countryList = {matches}/>
+            <CountryResults handleClick = {handleClick} countryList = {matches}/>
             
         </>
     )
