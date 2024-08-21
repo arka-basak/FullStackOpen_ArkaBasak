@@ -1,0 +1,19 @@
+POST http://localhost:3003/api/blogs
+content-type: application/json
+
+{
+    "title": "Starfield Progress",
+    "author": "IGN",
+    "url": "http://bethesda.net", 
+    "likes": 13
+}
+
+POST http://localhost:3003/api/blogs
+content-type: application/json
+
+{
+    "title": "Game Dev Thoughts",
+    "author": "Swank Sinatra",
+    "url": "http://idklololololo.net", 
+    "likes": 13
+}
