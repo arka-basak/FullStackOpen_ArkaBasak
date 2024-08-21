@@ -21,7 +21,7 @@ const CountrySearch = () =>{
     }
 
     useEffect(()=>{
-        queryCountries(filterString)
+        queryCountries(filterString)     
     },[ filterString])
 
     const handleClick = (e) =>{

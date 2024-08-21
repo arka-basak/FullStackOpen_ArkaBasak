@@ -33,8 +33,8 @@ const App = () => {
           setPersons(persons.concat(returnedPerson))
           updateNotif(`Added '${returnedPerson.name}'`, true, 5000)
         })
-      .catch(()=>{
-        updateNotif(`Could not add '${newPerson.name}'`, false, 5000)
+      .catch((error)=>{
+        updateNotif(`Could not add '${newPerson.name};'${error.response.data.error}`, false, 5000)
       })
   }
 

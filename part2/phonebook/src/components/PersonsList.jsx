@@ -1,7 +1,6 @@
 import PersonDisplay from "./PersonDisplay"
 
-const PersonsList = ({persons, filter, deletePerson}) =>{
-
+const PersonsList = ({ persons, filter, deletePerson }) =>{
     const filteredPersons = persons.filter((person)=>person.name.toLowerCase().includes(filter))
 
     return (
